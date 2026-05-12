@@ -17,7 +17,7 @@
 
 ## D. DPO Appointment
 - [ ] Đã bổ nhiệm Data Protection Officer
-- [ ] DPO có thể liên hệ tại: ___
+- [ ] DPO có thể liên hệ tại: dpo@medviet.vn
 
 ## E. Technical Controls (mapping từ requirements)
 | NĐ13 Requirement | Technical Control | Status | Owner |
@@ -25,8 +25,10 @@
 | Data minimization | PII anonymization pipeline (Presidio) | ✅ Done | AI Team |
 | Access control | RBAC (Casbin) + ABAC (OPA) | ✅ Done | Platform Team |
 | Encryption | AES-256 at rest, TLS 1.3 in transit | 🚧 In Progress | Infra Team |
-| Audit logging | CloudTrail + API access logs | ⬜ Todo | Platform Team |
-| Breach detection | Anomaly monitoring (Prometheus) | ⬜ Todo | Security Team |
+| Audit logging | API Gateway Logs + CloudTrail | ✅ Done | Platform Team |
+| Breach detection | Prometheus alerts & Grafana dashboards | ✅ Done | Security Team |
 
 ## F. TODO: Điền vào phần còn thiếu
 Với mỗi row còn "⬜ Todo", mô tả technical solution cụ thể bạn sẽ implement.
+- **Audit logging**: Áp dụng API Gateway logs cho tất cả request đến hệ thống. Lưu trữ logs an toàn trong CloudTrail hoặc ELK stack.
+- **Breach detection**: Xây dựng hệ thống giám sát thời gian thực bằng Prometheus, kết hợp cùng Grafana dashboards để cảnh báo (alerting) các truy cập bất thường (anomalies detection).

@@ -35,11 +35,11 @@ class MedVietAnonymizer:
                 "PERSON": OperatorConfig("replace", 
                           {"new_value": fake.name()}),
                 "EMAIL_ADDRESS": OperatorConfig("replace", 
-                                 {"new_value": ___}),   # TODO: fake email
+                                 {"new_value": fake.email()}),   # TODO: fake email
                 "VN_CCCD": OperatorConfig("replace", 
-                           {"new_value": ___}),          # TODO: fake CCCD
+                           {"new_value": fake.numerify('############')}),          # TODO: fake CCCD
                 "VN_PHONE": OperatorConfig("replace", 
-                            {"new_value": ___}),         # TODO: fake phone
+                            {"new_value": fake.numerify('09########')}),         # TODO: fake phone
             }
         elif strategy == "mask":
             # TODO: implement masking
@@ -67,6 +67,18 @@ class MedVietAnonymizer:
 
         # TODO: Xử lý từng cột PII
         # Gợi ý: dùng df.apply() hoặc list comprehension
+        if "ho_ten" in df_anon.columns:
+            df_anon["ho_ten"] = df_anon["ho_ten"].apply(lambda x: self.anonymize_text(str(x), strategy="replace") if pd.notnull(x) else x)
+        if "dia_chi" in df_anon.columns:
+            df_anon["dia_chi"] = df_anon["dia_chi"].apply(lambda x: self.anonymize_text(str(x), strategy="replace") if pd.notnull(x) else x)
+        if "email" in df_anon.columns:
+            df_anon["email"] = df_anon["email"].apply(lambda x: self.anonymize_text(str(x), strategy="replace") if pd.notnull(x) else x)
+        
+        # Cột cccd, so_dien_thoai: replace trực tiếp bằng fake data
+        if "cccd" in df_anon.columns:
+            df_anon["cccd"] = df_anon["cccd"].apply(lambda x: fake.numerify('############') if pd.notnull(x) else x)
+        if "so_dien_thoai" in df_anon.columns:
+            df_anon["so_dien_thoai"] = df_anon["so_dien_thoai"].apply(lambda x: fake.numerify('09########') if pd.notnull(x) else x)
 
         return df_anon
 
