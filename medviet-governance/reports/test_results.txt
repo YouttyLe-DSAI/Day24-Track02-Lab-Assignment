@@ -1,0 +1,726 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.15, pytest-8.2.0, pluggy-1.6.0 -- D:\Application\appdata\minianaconda\envs\Vin20k\python.exe
+cachedir: .pytest_cache
+rootdir: D:\FPTU\Vin\Day24-Track02-Lab-Assignment\medviet-governance
+plugins: anyio-4.13.0, Faker-40.15.0, hydra-core-1.3.2, langsmith-0.7.26, locust-2.43.4, typeguard-4.5.1
+collecting ... collected 6 items
+
+tests/test_pii.py::TestPIIDetection::test_cccd_detected FAILED           [ 16%]
+tests/test_pii.py::TestPIIDetection::test_phone_detected FAILED          [ 33%]
+tests/test_pii.py::TestPIIDetection::test_email_detected FAILED          [ 50%]
+tests/test_pii.py::TestPIIDetection::test_detection_rate_above_95_percent FAILED [ 66%]
+tests/test_pii.py::TestAnonymization::test_pii_not_in_output PASSED      [ 83%]
+tests/test_pii.py::TestAnonymization::test_non_pii_columns_unchanged PASSED [100%]
+
+================================== FAILURES ===================================
+_____________________ TestPIIDetection.test_cccd_detected _____________________
+tests\test_pii.py:18: in test_cccd_detected
+    results = anonymizer.analyzer.analyze(text=text, language="vi",
+D:\Application\appdata\minianaconda\envs\Vin20k\Lib\site-packages\presidio_analyzer\analyzer_engine.py:208: in analyze
+    recognizers = self.registry.get_recognizers(
+D:\Application\appdata\minianaconda\envs\Vin20k\Lib\site-packages\presidio_analyzer\recognizer_registry\recognizer_registry.py:197: in get_recognizers
+    raise ValueError("No matching recognizers were found to serve the request.")
+E   ValueError: No matching recognizers were found to serve the request.
+----------------------------- Captured log setup ------------------------------
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+------------------------------ Captured log call ------------------------------
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+____________________ TestPIIDetection.test_phone_detected _____________________
+tests\test_pii.py:26: in test_phone_detected
+    results = anonymizer.analyzer.analyze(text=text, language="vi", entities=["VN_PHONE"])
+D:\Application\appdata\minianaconda\envs\Vin20k\Lib\site-packages\presidio_analyzer\analyzer_engine.py:208: in analyze
+    recognizers = self.registry.get_recognizers(
+D:\Application\appdata\minianaconda\envs\Vin20k\Lib\site-packages\presidio_analyzer\recognizer_registry\recognizer_registry.py:197: in get_recognizers
+    raise ValueError("No matching recognizers were found to serve the request.")
+E   ValueError: No matching recognizers were found to serve the request.
+----------------------------- Captured log setup ------------------------------
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+------------------------------ Captured log call ------------------------------
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+____________________ TestPIIDetection.test_email_detected _____________________
+tests\test_pii.py:32: in test_email_detected
+    results = anonymizer.analyzer.analyze(text=text, language="vi", entities=["EMAIL_ADDRESS"])
+D:\Application\appdata\minianaconda\envs\Vin20k\Lib\site-packages\presidio_analyzer\analyzer_engine.py:208: in analyze
+    recognizers = self.registry.get_recognizers(
+D:\Application\appdata\minianaconda\envs\Vin20k\Lib\site-packages\presidio_analyzer\recognizer_registry\recognizer_registry.py:197: in get_recognizers
+    raise ValueError("No matching recognizers were found to serve the request.")
+E   ValueError: No matching recognizers were found to serve the request.
+----------------------------- Captured log setup ------------------------------
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+------------------------------ Captured log call ------------------------------
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+____________ TestPIIDetection.test_detection_rate_above_95_percent ____________
+tests\test_pii.py:41: in test_detection_rate_above_95_percent
+    assert rate >= 0.95, f"Detection rate {rate:.2%} < 95%"
+E   AssertionError: Detection rate 17.50% < 95%
+E   assert 0.175 >= 0.95
+----------------------------- Captured log setup ------------------------------
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - CreditCardRecognizer supported languages: pl, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNifRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - EsNieRecognizer supported languages: es, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItDriverLicenseRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItFiscalCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItVatCodeRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItIdentityCardRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - ItPassportRecognizer supported languages: it, registry supported languages: en
+WARNING  presidio-analyzer:recognizers_loader_utils.py:168 Recognizer not added to registry because language is not supported by registry - PlPeselRecognizer supported languages: pl, registry supported languages: en
+---------------------------- Captured stdout call -----------------------------
+
+Detection rate: 17.50%
+------------------------------ Captured log call ------------------------------
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity WORK_OF_ART is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:spacy_nlp_engine.py:272 Entity CARDINAL is not mapped to a Presidio entity, but keeping anyway. Add to `NerModelConfiguration.labels_to_ignore` to remove.
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity EMAIL_ADDRESS doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_CCCD doesn't have the corresponding recognizer in language : vi
+WARNING  presidio-analyzer:recognizer_registry.py:182 Entity VN_PHONE doesn't have the corresponding recognizer in language : vi
+=========================== short test summary info ===========================
+FAILED tests/test_pii.py::TestPIIDetection::test_cccd_detected - ValueError: ...
+FAILED tests/test_pii.py::TestPIIDetection::test_phone_detected - ValueError:...
+FAILED tests/test_pii.py::TestPIIDetection::test_email_detected - ValueError:...
+FAILED tests/test_pii.py::TestPIIDetection::test_detection_rate_above_95_percent
+=================== 4 failed, 2 passed in 91.85s (0:01:31) ====================
